@@ -1,0 +1,25 @@
+this doc is to help with setting up the javascript classes and tags to put in the graphs and menues
+
+------------------
+overall goal
+
+this is intended to be for a team to use to pick their prefureed
+player drafts 
+
+the explination is aimed at high-level hockey team manengement 
+
+------------------
+
+guide :
+    c = classes
+    id = id
+    g = graph
+    ddm = drop down menu
+
+homepage - 
+
+
+
+
+
+
