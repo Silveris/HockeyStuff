@@ -54,7 +54,7 @@ def groupby_median(df, category):
     med_pts = temp_df["PTS/60min"].median()
     med_hits = temp_df["HIT/60min"].median()
     med_blocks = temp_df["BLK/60min"].median()
-    med_shhotperc = temp_df["S_percent"].median()
+    med_shotperc = temp_df["S_percent"].median()
     med_pim = temp_df["PIM/60min"].median()
     count = temp_df["Player"].count()
 
@@ -66,6 +66,7 @@ def groupby_median(df, category):
         "Med HIT/60min" : med_hits,
         "Med BLK/60min" : med_blocks,
         "Med PIM/60min" : med_pim,
+        "Med S_Percent" :  med_shotperc,
         "Num Players" : count
     })
     return new_df
