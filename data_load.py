@@ -30,6 +30,7 @@ def groupby_avg(df, category):
     avg_blocks = temp_df["BLK/60min"].mean()
     avg_shootperc = temp_df["S_percent"].mean()
     avg_pim = temp_df["PIM/60min"].mean()
+    med_pim = temp_df["PIM/60min"].median()
     count = temp_df["Player"].count()
 
     # Builds the new df
@@ -41,6 +42,7 @@ def groupby_avg(df, category):
         "Avg BLK/60min" : avg_blocks,
         "Avg S_percent" : avg_shootperc,
         "Avg PIM/60min" : avg_pim,
+        "Median PIM/60min" : med_pim,
         "Num Players" : count
     })
     return new_df
@@ -105,6 +107,7 @@ def multi_groupby_avg(df, category1, category2):
     avg_hits = temp_df["HIT/60min"].mean()
     avg_blocks = temp_df["BLK/60min"].mean()
     avg_pim = temp_df["PIM/60min"].mean()
+    med_pim = temp_df["PIM/60min"].median()
     count = temp_df["Age"].count()
 
     new_df = pd.DataFrame({
@@ -113,7 +116,8 @@ def multi_groupby_avg(df, category1, category2):
         "Avg PTS/60min" : avg_pts,
         "Avg HIT/60min" : avg_hits,
         "Avg BLK/60min" : avg_blocks,
-         "Avg PIM/60min" : avg_pim,
+        "Avg PIM/60min" : avg_pim,
+        "Med PIM/60min" : med_pim,
         "Avg Players" : count
     })
     return new_df
@@ -209,5 +213,5 @@ collection3.insert_many(data3)
 
 
 # %%
-
+print("Complete")
 
