@@ -37,6 +37,7 @@ def scrape_data():
 @app.route('/<position>/<stat>')
 def pos_stat():
 
+
     data = []
     return jsonify(data)
 
