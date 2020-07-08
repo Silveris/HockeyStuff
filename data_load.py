@@ -23,6 +23,7 @@ def groupby_avg(df, category):
     temp_df = df.groupby([category])
 
     # Calculates the average stats for each group
+    cat_group = temp_df[category].max()
     avg_goals = temp_df["G/60min"].mean()
     avg_assists = temp_df["A/60min"].mean()
     avg_pts = temp_df["PTS/60min"].mean()
@@ -36,6 +37,7 @@ def groupby_avg(df, category):
 
     # Builds the new df
     new_df = pd.DataFrame({
+        category: cat_group,
         "Avg G/60min" : avg_goals,
         "Avg A/60min" : avg_assists,
         "Avg PTS/60min" : avg_pts,
@@ -161,8 +163,9 @@ season_df.head()
 
 
 # %%
-new_df = three_year_group(complete_nhl_df.copy())
+new_df = three_year_group(complete_nhl_df)
 year_groups_df = multi_groupby_avg(new_df, "Age", "Season_group")
+year_groups_df.reset_index(inplace=True)
 year_groups_df.head()
 
 # %% [markdown]
