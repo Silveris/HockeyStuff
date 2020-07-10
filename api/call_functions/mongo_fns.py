@@ -18,6 +18,10 @@ def call_by_pos(pos):
     data = []
     if pos.lower in ['rw', 'lw', 'c'] :
         call = player.find({'Pos' : {'$in' : ['RW', 'LW', 'C']}})
+
+    elif pos.lower == 'forward':
+        call = player.find({'Pos' : {'$ne': ['D']}})
+
     else:
         call = player.find({'Pos' : {'$in' : ['D']}})
 
