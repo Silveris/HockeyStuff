@@ -7,12 +7,21 @@ import pymongo
 
 
 # %%
-file = "data/clean_hockey_data.csv"
+file = "../data/clean_hockey_data.csv"
 nhl_df = pd.read_csv(file)
 
 
 # %%
+file2 = "../data/clean2020.csv"
+nhl2020_df = pd.read_csv(file2)
+
+
+# %%
 nhl_df.head()
+
+
+# %%
+nhl2020_df.head()
 
 
 # %%
@@ -231,6 +240,15 @@ collection4 = db.age_season_groups
 # %%
 data4 = year_groups_df.to_dict(orient='records')
 collection4.insert_many(data4)
+
+
+# %%
+collection5 = db.nhl2020_players
+
+
+# %%
+data5 = nhl2020_df.to_dict(orient='records')
+collection5.insert_many(data5)
 
 
 # %%
