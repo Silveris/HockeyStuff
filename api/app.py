@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from call_functions import mongo_fns
 import json
 
@@ -9,8 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return'home'
-
+    return render_template('Hindex.html')
 
 @app.route('/api/v1.0/<position>')
 def x(position):
