@@ -2,7 +2,7 @@
 # To add a new markdown cell, type '# %% [markdown]'
 # %%
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import pymongo
 
 
