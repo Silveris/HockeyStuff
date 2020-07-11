@@ -22,11 +22,10 @@ body /*{
   }
 */
 
-.topnavbar {
-  color = white;
+.navbar {
+  color: white;
   padding-left: 50px;
-  
-}
+  }
 
 .navsection {
   margin-right: 440px;
