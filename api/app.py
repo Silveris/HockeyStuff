@@ -15,10 +15,11 @@ def home():
 def players2020():
     return render_template('Players2020.html')
 
+
 @app.route('/api/v1.0/<position>')
 def x(position):
     data = mongo_fns.call_by_pos(str(position))
-#    output = json.dumps(data)
+    # output = json.dumps(data)
     return jsonify(data)
 
 

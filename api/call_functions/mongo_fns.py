@@ -18,14 +18,14 @@ def call_by_pos(pos):
     data = []
     print(pos)
     if pos.lower() in ['rw', 'lw', 'c'] :
-        call = player.find({'Pos' : {'$in' : ['RW', 'LW', 'C']}}, {'_id':False})
+        call = player.find({'Pos' : {'$in' : ['RW', 'LW', 'C']}}, {'_id':False, 'FO_percent':False})
 
     elif pos.lower() == 'forward':
-        call = player.find({'Pos' : {'$ne': ['D']}}, {'_id':False})
+        call = player.find({'Pos' : {'$ne': ['D']}}, {'_id':False, 'FO_percent':False})
 
     else:
         print("D")
-        call = player.find({'Pos' : {'$in' : ['D']}}, {'_id':False})
+        call = player.find({'Pos' : {'$in' : ['D']}}, {'_id':False, 'FO_percent':False})
 
     for x in call:
         data.append(x)

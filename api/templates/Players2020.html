@@ -29,46 +29,17 @@
           background-image: url('./static/imgs/thumb-1920-795380.jpg');
         }
     </style>
-    <!-- <div style="background-image: site\static\imgs\thumb-1920-795380"></div> -->
-      <!-- <a target="_blank" href="site\static\imgs\thumb-1920-795380.jpg">
-        <img src="site\static\imgs\thumb-1920-795380.jpg" alt="Hockey goalie" class="center">
-      </a> -->
     <div class="jumbotron">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2">
-                    <aside class="filters">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Filter Search</div>
-                        <div class="panel-body">
-                        <form>
-                            <div class="form-group">
-                            <ul class="list-group" id="filters">
-                                <li>
-                                <select id="selSearch">
-                                    <option value="date">Date</option>
-                                    <option value="city">City</option>
-                                    <option value="state">State</option>
-                                    <option value="country">Country</option>
-                                    <option value="shape">Shape</option>
-                                </select>
-                                </li>
-                                <!-- <li class="filter list-group-item">
-                                <label id="field-label" for="date">Enter a Date</label>
-                                <input class="form-control" id="filter-input" type="text" placeholder="1/11/2011">
-                                </li> -->
-                            </ul>
-                            </div>
-                            <button id="filter-btn" type="button" class="btn btn-default">Filter Table</button>
-                        </form>
-                        </div>
-                    </div>
-                    </aside>
-                </div>
+              <div class="well">
+                <h5>Select a team:</h5>
+                <select id="selDataset"></select>
+              </div>
             </div>
             <div class="col-md-10">
                 <div id="table-area" class="">
-                <table id="ufo-table" class="table table-striped">
+                <table id="nhl-table" class="table table-striped">
                     <thead>
                     <tr>
                         <!-- Append table headers here -->
