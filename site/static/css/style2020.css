@@ -1,0 +1,4 @@
+.jumbotron {
+    background: rgb(254, 254, 254); /* This is for ie8 and below */
+    background: rgba(254, 254, 254, 0.5); 
+ }
