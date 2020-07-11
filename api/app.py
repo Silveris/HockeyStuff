@@ -15,6 +15,14 @@ def home():
 def players2020():
     return render_template('Players2020.html')
 
+@app.route('/Homepage')
+def homepage():
+    return render_template('Homepage.html')
+
+@app.route('/Players')
+def players():
+    return render_template('Players.html')
+
 @app.route('/api/v1.0/<position>')
 def x(position):
     data = mongo_fns.call_by_pos(str(position))
