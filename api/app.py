@@ -13,9 +13,9 @@ def home():
 
 @app.route('/api/v1.0/<position>')
 def x(position):
-    data = mongo_fns.call_by_pos(position)
-    output = json.dumps(data, default=str)
-    return jsonify(output)
+    data = mongo_fns.call_by_pos(str(position))
+#    output = json.dumps(data)
+    return jsonify(data)
 
 
 if __name__ == '__main__':

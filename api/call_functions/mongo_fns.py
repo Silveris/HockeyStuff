@@ -16,14 +16,16 @@ season = nhl_db['season_groups']
 
 def call_by_pos(pos):
     data = []
-    if pos.lower in ['rw', 'lw', 'c'] :
-        call = player.find({'Pos' : {'$in' : ['RW', 'LW', 'C']}})
+    print(pos)
+    if pos.lower() in ['rw', 'lw', 'c'] :
+        call = player.find({'Pos' : {'$in' : ['RW', 'LW', 'C']}}, {'_id':False})
 
-    elif pos.lower == 'forward':
-        call = player.find({'Pos' : {'$ne': ['D']}})
+    elif pos.lower() == 'forward':
+        call = player.find({'Pos' : {'$ne': ['D']}}, {'_id':False})
 
     else:
-        call = player.find({'Pos' : {'$in' : ['D']}})
+        print("D")
+        call = player.find({'Pos' : {'$in' : ['D']}}, {'_id':False})
 
     for x in call:
         data.append(x)
