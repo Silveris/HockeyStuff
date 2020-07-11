@@ -16,6 +16,14 @@ body {
   }
 
 
+/*center="class" for the homepage image*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
 
   
   /* Giving our navbar some padding and a background color */
@@ -33,7 +41,11 @@ body {
 
 /* Giving the .blurb element margin on 3 sides */
 .blurb {
-    margin-top: 50px;
-    margin-right: 100px;
-    margin-left: 100px;
+    margin-top: 50px !important;
+    margin-right: 100px !important;
+    margin-left: 100px !important;
   }
+
+  MOst specific is highest priority
+  ID beats classes
+  To update one thing, just put an id on it
