@@ -13,6 +13,10 @@ body /*{
     h3 {
     font-size: 30px;
   }
+    image {
+      background-size: cover;
+
+    }
 
 
   /* Giving our navbar some padding and a background color */
