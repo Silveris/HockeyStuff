@@ -11,6 +11,10 @@ app = Flask(__name__)
 def home():
     return render_template('Hindex.html')
 
+@app.route('/Players2020')
+def players2020():
+    return render_template('Players2020.html')
+
 @app.route('/api/v1.0/<position>')
 def x(position):
     data = mongo_fns.call_by_pos(str(position))
