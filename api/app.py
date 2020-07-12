@@ -19,6 +19,10 @@ def players2020():
 def homepage():
     return render_template('Homepage.html')
 
+@app.route('/Aboutus')
+def aboutus():
+    return render_template('Aboutus.html')
+
 @app.route('/Players')
 def players():
     return render_template('Players.html')
