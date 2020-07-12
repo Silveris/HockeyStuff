@@ -14,17 +14,13 @@ body /*{
     font-size: 30px;
   }
   
-
-  /* Giving our navbar some padding and a background color */
-/*.navbar {
-    padding: 30px;
-    background: #020e24;
+  .navbar-default {
+  padding-bottom: 30px;
+  padding-top: 30px;
   }
-*/
 
-.navbar-default {
-  padding-bottom: 20px;
-  padding-top: 20px;
+  a:link {
+    color: navy;
   }
 
   /*
@@ -40,25 +36,15 @@ body /*{
 
 .jumbotronHome {
   background: rgb(119, 145, 180); /* This is for ie8 and below */
-  background: rgba(254, 254, 254, 0.5); 
+  background: rgba(254, 254, 254, 0.8); 
   color:  rgb(32, 32, 32);
   font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
 }
 
-.jumbotron {
-  background: rgb(254, 254, 254); /* This is for ie8 and below */
-  background: rgba(254, 254, 254, 0.5); 
-  color:  black
-}
 
-/*center="class" for the homepage image*/
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 75%;
-}
 
 
 /* Formatting for paragraph elements */
@@ -79,6 +65,15 @@ body /*{
   font-weight: bold;
   font-size: 16pt;
 }
+
+/*center="class" for the homepage image*/
+/*.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+} */
+
   /*Most specific is highest priority
   ID beats classes
   To update one thing, just put an id on it
