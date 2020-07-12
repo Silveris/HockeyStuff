@@ -1,0 +1,58 @@
+
+/* Giving the body the specified background color, adding font sizes for the h1 and h3 elements we'll be using */
+body 
+    h1 {
+    font-size: 50px;
+  }
+    h3 {
+    font-size: 30px;
+  }
+  
+
+.navbar-default {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  }
+
+.jumbotronHome {
+  background: rgb(119, 145, 180); /* This is for ie8 and below */
+  background: rgba(254, 254, 254, 0.5); 
+  color:  rgb(32, 32, 32);
+  font-size: 24px;
+}
+
+.jumbotron {
+  background: rgb(254, 254, 254); /* This is for ie8 and below */
+  background: rgba(254, 254, 254, 0.5); 
+  color:  black
+}
+
+/*center="class" for the homepage image*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+}
+
+
+/* Formatting for paragraph elements */
+.blurbs {
+    margin-top: 50px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+  }
+.blurb {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.footer {
+  position: relative;
+  color:  black;
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+
