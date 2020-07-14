@@ -7,6 +7,13 @@ body /*{
     color: rgb(255,195,0);
     padding-top: 10px;
   }
+
+  @font-face {
+    font-family: "Bauer";
+    src: url('/static/fonts/bauer-ye4v-webfont.woff2') format('woff2'),
+         url('/static/fonts/bauer-ye4v-webfont.woff') format('woff');
+  }
+
   p {
     font-size:18px;
     font-weight: bolder;
