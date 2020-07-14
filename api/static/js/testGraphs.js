@@ -21,8 +21,8 @@ var svg = d3.select("#graph")
   .attr("height", svgHeight);
 
 // Append a group area, then set its margins
-var chartGroup = svg.append("g")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`);
+// var chartGroup = svg.append("g")
+//   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 
 Promise.all([
@@ -110,8 +110,23 @@ Promise.all([
 
     // Creates a plot based on the dataset and metric
     function makePlot(data, metric) {
-        graph = d3.select("g");
+        graph = d3.select("svg");
         graph.html("");
+        var chartGroup = svg.append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+        if (metric === "Points") {
+            col_name = "Avg PTS/60min";
+        }
+        else if (metric === "Hits") {
+            col_name = "Avg HIT/60min";
+        }
+        else if (metric === "Blocks") {
+            col_name = "Avg BLK/60min";
+        }
+        else {
+            col_name = "Med PIM/60min"
+        }
 
 
         var xLinearScale = d3.scaleLinear()
@@ -120,7 +135,7 @@ Promise.all([
 
         // Configure a linear scale with a range between the chartHeight and 0
         var yLinearScale = d3.scaleLinear()
-            .domain([d3.min(data, d => d["Avg PTS/60min"]), d3.max(data, d => d["Avg PTS/60min"])])
+            .domain([d3.min(data, d => d[col_name]), d3.max(data, d => d[col_name])])
             .range([chartHeight, 0]);
 
         // Create two new functions passing the scales in as arguments
@@ -131,7 +146,7 @@ Promise.all([
         // Configure a line function which will plot the x and y coordinates using our scales
         var drawLine = d3.line()
             .x(d => xLinearScale(d.Age))
-            .y(d => yLinearScale(d["Avg PTS/60min"]));
+            .y(d => yLinearScale(d[col_name]));
 
         // Append an SVG path and plot its points using the line function
         chartGroup.append("path")
@@ -167,7 +182,7 @@ Promise.all([
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .style("font-size", "24px")
-        .text("Points per 60 Minutes");
+        .text(`${metric} per 60 Minutes`);
 
         // Add the title
         svg.append("text")
@@ -175,7 +190,7 @@ Promise.all([
             .attr("y", 0 + margin.top)
             .attr("text-anchor", "middle")
             .style("font-size", "32px")
-            .text("Average Points per 60 Minutes by Age");
+            .text(`Average ${metric} per 60 Minutes by Age`);
 
 
 
