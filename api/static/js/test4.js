@@ -26,12 +26,46 @@ Promise.all([
     f_season_data = files[2];
     d_season_data = files[3];
     
-    //console.log(f_age_data);
-    //console.log(d_age_data);
+    console.log(f_age_data);
+    console.log(d_age_data);
     console.log(f_season_data);
-    //console.log(d_season_data);
+    console.log(d_season_data);
 
 })
+
+f_age_data.forEach(function(d) {
+    d.Age = +d.Age;
+    d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+    d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+    d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+    d["Med PIM/60min"] = +d["Med PIM/60min"];
+  });
+
+  d_age_data.forEach(function(d) {
+    d.Age = +d.Age;
+    d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+    d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+    d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+    d["Med PIM/60min"] = +d["Med PIM/60min"];
+  });
+
+f_season_data.forEach(function(d) {
+  d.Age = +d.Age;
+  d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+  d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+  d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+  d["Med PIM/60min"] = +d["Med PIM/60min"];
+  d.Season_group = d.Seaon_group;
+});
+
+d_season_data.forEach(function(d) {
+    d.Age = +d.Age;
+    d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+    d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+    d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+    d["Med PIM/60min"] = +d["Med PIM/60min"];
+    d.Season_group = d.Seaon_group;
+  });
 
 // ------------------------------------------------------------------------------
 
@@ -60,16 +94,6 @@ var svg = d3.select("body")
 // Append a group area, then set its margins
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-// Load data from API
-d3.json("api/v1.0/ageseason/forward").then(function(asfData) {
-
-  // Format the date and cast the force value to a number
-  asfData.forEach(function(d) {
-    d.Age = +d.Age;
-    d["Avg PTS/60min"] = +d["Avg PTS/60min"];
-    d.Season_group = d.Seaon_group;
-  });
 
   // d3.extent returns the an array containing the min and max values for the property specified
   var xLinearScale = d3.scaleLinear()
@@ -108,6 +132,3 @@ d3.json("api/v1.0/ageseason/forward").then(function(asfData) {
     .classed("axis", true)
     .attr("transform", `translate(0, ${chartHeight})`)
     .call(bottomAxis);
-}).catch(function(error) {
-  console.log(error);
-});
