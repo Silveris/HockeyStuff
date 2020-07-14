@@ -7,12 +7,12 @@ import pymongo
 
 
 # %%
-file = "../data/clean_hockey_data.csv"
+file = "data/clean_hockey_data.csv"
 nhl_df = pd.read_csv(file)
 
 
 # %%
-file2 = "../data/clean2020.csv"
+file2 = "data/clean2020.csv"
 nhl2020_df = pd.read_csv(file2)
 
 

@@ -15,6 +15,10 @@ def home():
 def players2020():
     return render_template('Players2020.html')
 
+@app.route('/test4')
+def test4():
+    return render_template('test4.html')
+
 @app.route('/Homepage')
 def homepage():
     return render_template('Homepage.html')
