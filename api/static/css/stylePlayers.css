@@ -1,16 +1,19 @@
 
 /* Giving the body the specified background color, adding font sizes for the h1 and h3 elements we'll be using */
 body 
-    h1 {
-      font-size: 60px;
-      font-family: Bauer;
-      color: rgb(255,195,0);
-    }
-      h3 {
-      font-size: 40px;
-      font-weight: bolder;
-      color: white;
-    }
+h1 {
+  font-size: 60px;
+  font-family: Bauer;
+  color: rgb(255,195,0);
+  padding-top: 20px;
+}
+
+h2 {
+  font-size:22px;
+  font-weight: bolder;
+  color: white;
+  padding-bottom: 15px;
+}
   
 
 .navbar-default {

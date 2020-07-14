@@ -2,24 +2,31 @@ body /*{
   background: rgb(32, 32, 32);
 }*/
   h1 {
-  font-size: 45px;
-  font-family: Bauer;
-  color: rgb(255,195,0);
-  padding-top: 20px;
-}
-  h5 {
-  font-size: 30px;
-  font-family: Bauer;
-  color: white;
-}
+    font-size: 45px;
+    font-family: Bauer;
+    color: rgb(255,195,0);
+    padding-top: 10px;
+  }
+  p {
+    font-size:18px;
+    font-weight: bolder;
+    color: white;
+    
+    }
+  p1 {
+    font-size:18px;
+    font-weight: bolder;
+    color: white;
+    padding-bottom: 15px;
+    }
 
-/*CAN'T GET THE BACKGROUND COLOR OR FONT COLOR TO CHANGE!!? The padding adjusts, so not sure why the rest won't??*/
-.navbar-default {
-  padding-bottom: 20px;
-  padding-top: 20px;
-  background-color: black;
-  color: white;
-}
+  /*Ca't get the colors to update!!? The padding adjusts, so not sure why the rest won't??*/
+  .navbar-default {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: black;
+    color: white;
+  }
 
 .wrapper {
   padding-bottom: 100px;
@@ -75,7 +82,16 @@ body /*{
   font-size: 17px;
 }
 
+.footer {
+  position: absolute;
+bottom: 90;
+width: 100%;
+height: 0px;
+color: white;
+font-size: 18px;
+padding-top: 0px;
 
+}
 
 
 
