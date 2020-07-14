@@ -1,11 +1,11 @@
 // Define SVG area dimensions
-var svgWidth = 960;
+var svgWidth = 1020;
 var svgHeight = 500;
 
 // Define the chart's margins as an object
 var margin = {
   top: 60,
-  right: 60,
+  right: 120,
   bottom: 60,
   left: 60
 };
@@ -77,7 +77,7 @@ Promise.all([
     var dropdown2 = d3.select("#metric-sel");
     var dropdown3 = d3.select("#grouping-sel");
 
-    function init() {
+    function initialize() {
         getDropDown;
     }
 
@@ -158,7 +158,6 @@ Promise.all([
             var early = data.filter(data => data.Season_group === "2004-06");
             var mid = data.filter(data => data.Season_group === "2009-11");
             var late = data.filter(data => data.Season_group === "2016-18");
-            console.log(early);
 
             chartGroup.append("path")
                 .attr("d", drawLine(early))
@@ -169,6 +168,14 @@ Promise.all([
             chartGroup.append("path")
                 .attr("d", drawLine(late))
                 .classed("line3", true);
+
+            // Legend
+            svg.append("circle").attr("cx",925).attr("cy",110).attr("r", 6).style("fill", "blue")
+            svg.append("circle").attr("cx",925).attr("cy",135).attr("r", 6).style("fill", "orange")
+            svg.append("circle").attr("cx",925).attr("cy",160).attr("r", 6).style("fill", "green")
+            svg.append("text").attr("x", 940).attr("y", 110).text("2004-06").style("font-size", "15px").attr("alignment-baseline","middle")
+            svg.append("text").attr("x", 940).attr("y", 135).text("2009-11").style("font-size", "15px").attr("alignment-baseline","middle")
+            svg.append("text").attr("x", 940).attr("y", 160).text("2016-18").style("font-size", "15px").attr("alignment-baseline","middle")
         }
         else {
             // Append an SVG path and plot its points using the line function
@@ -211,7 +218,7 @@ Promise.all([
         // Add the title
         svg.append("text")
             .attr("x", (chartWidth / 2))     
-            .attr("y", 0 + margin.top)
+            .attr("y", 0 + margin.top / 2)
             .attr("text-anchor", "middle")
             .style("font-size", "32px")
             .text(`Average ${metric} per 60 Minutes`);
@@ -222,7 +229,7 @@ Promise.all([
     }
 
 
-    init;
+    initialize;
     dropdown1.on("change", getDropDown);
     dropdown2.on("change", getDropDown);
     dropdown3.on("change", getDropDown);
