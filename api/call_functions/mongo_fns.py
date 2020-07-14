@@ -10,8 +10,12 @@ conn = 'mongodb://localhost:27017/'
 client = pymongo.MongoClient(conn)
 nhl_db = client['nhl_db']
 player = nhl_db['nhl_player_data']
-age = nhl_db['age_groups']
-season = nhl_db['season_groups']
+f_age = nhl_db['f_age_groups']
+d_age = nhl_db['d_age_groups']
+f_season = nhl_db['f_season_groups']
+d_season = nhl_db['d_season_groups']
+f_age_season = nhl_db['f_age_season_groups']
+d_age_season = nhl_db['d_age_season_groups']
 nhl2020 = nhl_db['nhl2020_players']
 
 
@@ -50,7 +54,28 @@ def call_forward_pos():
 
 def call_2020():
     data = []
+    # I didn't know how to include the two false statements without a conditional find
     call = nhl2020.find({'Pos' : {'$ne': ['Q']}}, {'_id':False, 'FO%':False})
+    for x in call:
+        data.append(x)
+    return data
+
+def call_age(pos):
+    data = []
+    if pos.lower() == "forward":
+        call = f_age.find({'Age' : {'$ne': [100]}}, {'_id':False})
+    else:
+        call = d_age.find({'Age' : {'$ne': [100]}}, {'_id':False})
+    for x in call:
+        data.append(x)
+    return data
+
+def call_age_season(pos):
+    data = []
+    if pos.lower() == "forward":
+        call = f_age_season.find({'Age' : {'$ne': [100]}}, {'_id':False})
+    else:
+        call = d_age_season.find({'Age' : {'$ne': [100]}}, {'_id':False})
     for x in call:
         data.append(x)
     return data

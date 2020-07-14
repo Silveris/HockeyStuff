@@ -153,6 +153,11 @@ def three_year_group(df):
     # grouped_df = multi_groupby_avg(new_df, "Age", "Season_group")
     return new_df
 
+
+# %%
+forwards_data = nhl_df[(nhl_df["Pos"] != "D") & (nhl_df["Age"] >= 20)]
+defensemen_data = nhl_df[(nhl_df["Pos"] == "D") & (nhl_df["Age"] >= 20)]
+
 # %% [markdown]
 # # dfs to be moved to database
 
@@ -162,20 +167,40 @@ complete_nhl_df.head()
 
 
 # %%
-age_df = groupby_avg(complete_nhl_df, "Age")
-age_df.head()
+f_age_df = groupby_avg(forwards_data, "Age")
+# age_df = groupby_avg(complete_nhl_df, "Age")
+f_age_df.head()
 
 
 # %%
-season_df = groupby_avg(complete_nhl_df, "Season")
-season_df.head()
+d_age_df = groupby_avg(defensemen_data, "Age")
+d_age_df.head()
 
 
 # %%
-new_df = three_year_group(complete_nhl_df)
-year_groups_df = multi_groupby_avg(new_df, "Age", "Season_group")
-year_groups_df.reset_index(inplace=True)
-year_groups_df.head()
+f_season_df = groupby_avg(forwards_data, "Season")
+# season_df = groupby_avg(complete_nhl_df, "Season")
+f_season_df.head()
+
+
+# %%
+d_season_df = groupby_avg(defensemen_data, "Season")
+d_season_df.head()
+
+
+# %%
+new_df = three_year_group(forwards_data)
+#new_df = three_year_group(complete_nhl_df)
+f_year_groups_df = multi_groupby_avg(new_df, "Age", "Season_group")
+f_year_groups_df.reset_index(inplace=True)
+f_year_groups_df.head()
+
+
+# %%
+new_df = three_year_group(defensemen_data)
+d_year_groups_df = multi_groupby_avg(new_df, "Age", "Season_group")
+d_year_groups_df.reset_index(inplace=True)
+d_year_groups_df.head()
 
 # %% [markdown]
 # # Loading into MongoDB
@@ -216,29 +241,29 @@ collection.insert_many(data)
 
 
 # %%
-collection2 = db.age_groups
+collection2 = db.f_age_groups
 
 
 # %%
-data2 = age_df.to_dict(orient='records')
+data2 = f_age_df.to_dict(orient='records')
 collection2.insert_many(data2)
 
 
 # %%
-collection3 = db.season_groups
+collection3 = db.f_season_groups
 
 
 # %%
-data3 = season_df.to_dict(orient='records')
+data3 = f_season_df.to_dict(orient='records')
 collection3.insert_many(data3)
 
 
 # %%
-collection4 = db.age_season_groups
+collection4 = db.f_age_season_groups
 
 
 # %%
-data4 = year_groups_df.to_dict(orient='records')
+data4 = f_year_groups_df.to_dict(orient='records')
 collection4.insert_many(data4)
 
 
@@ -249,6 +274,33 @@ collection5 = db.nhl2020_players
 # %%
 data5 = nhl2020_df.to_dict(orient='records')
 collection5.insert_many(data5)
+
+
+# %%
+collection6 = db.d_age_season_groups
+
+
+# %%
+data6 = d_year_groups_df.to_dict(orient='records')
+collection6.insert_many(data6)
+
+
+# %%
+collection7 = db.d_season_groups
+
+
+# %%
+data7 = d_season_df.to_dict(orient='records')
+collection7.insert_many(data7)
+
+
+# %%
+collection8 = db.d_age_groups
+
+
+# %%
+data8 = d_age_df.to_dict(orient='records')
+collection8.insert_many(data8)
 
 
 # %%

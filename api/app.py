@@ -38,6 +38,16 @@ def nhl2020():
     data = mongo_fns.call_2020()
     return jsonify(data)
 
+@app.route('/api/v1.0/age/<position>')
+def age(position):
+    data = mongo_fns.call_age(str(position))
+    return jsonify(data)
+
+@app.route('/api/v1.0/ageseason/<position>')
+def age_season(position):
+    data = mongo_fns.call_age_season(str(position))
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
