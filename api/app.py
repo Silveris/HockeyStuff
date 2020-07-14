@@ -9,7 +9,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('Hindex.html')
+    return render_template('test.html')
+
+@app.route('/test2')
+def test2():
+    return render_template('test2.html')
+
+@app.route('/test3')
+def test3():
+    return render_template('test3.html')
 
 @app.route('/Players2020')
 def players2020():
