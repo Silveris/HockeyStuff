@@ -78,7 +78,7 @@ Promise.all([
     var dropdown3 = d3.select("#grouping-sel");
 
     function initialize() {
-        getDropDown;
+        getDropDown();
     }
 
     // Finds the dropdown values to make a graph with
@@ -229,7 +229,7 @@ Promise.all([
     }
 
 
-    initialize;
+    initialize();
     dropdown1.on("change", getDropDown);
     dropdown2.on("change", getDropDown);
     dropdown3.on("change", getDropDown);
