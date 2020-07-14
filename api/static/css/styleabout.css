@@ -24,7 +24,7 @@
 
 /* Padding inside container */
 .container {
-  padding: 0 16px;
+  padding: 0 40px;
 }
 
 /* Clear floats */
@@ -35,5 +35,5 @@
 }
 
 .title {
-  color: grey;
+  color: rgb(25, 201, 25);
 }
