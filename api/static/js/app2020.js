@@ -1,4 +1,4 @@
-d3.json("api/v1.0/forward").then((importedData) => {
+d3.json("api/v1.0/nhl2020").then((importedData) => {
     // This is a placeholder and needs to be moved over to the 2020 data set once loaded
     var data = importedData;
     console.log(data);
@@ -80,9 +80,9 @@ d3.json("api/v1.0/forward").then((importedData) => {
                 G: player.G,
                 A: player.A,
                 Pts: player.PTS,
-                PlusMinus: player.plusminus,
+                PlusMinus: player['+/-'],
                 PIM: player.PIM,
-                ShootPercent: player.S_percent,
+                ShootPercent: player['S%'],
                 TOI: player.TOI,
                 ATOI: player.ATOI,
                 Hits: player.HIT,

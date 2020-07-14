@@ -33,6 +33,11 @@ def x(position):
     # output = json.dumps(data)
     return jsonify(data)
 
+@app.route('/api/v1.0/nhl2020')
+def nhl2020():
+    data = mongo_fns.call_2020()
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

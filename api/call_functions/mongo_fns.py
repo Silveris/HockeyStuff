@@ -12,6 +12,7 @@ nhl_db = client['nhl_db']
 player = nhl_db['nhl_player_data']
 age = nhl_db['age_groups']
 season = nhl_db['season_groups']
+nhl2020 = nhl_db['nhl2020_players']
 
 
 def call_by_pos(pos):
@@ -43,6 +44,13 @@ def call_def_pos():
 def call_forward_pos():
     data = []
     call = player.find({'Pos' : {'$in' : ['RW', 'LW', 'C']}})
+    for x in call:
+        data.append(x)
+    return data
+
+def call_2020():
+    data = []
+    call = nhl2020.find({'Pos' : {'$ne': ['Q']}}, {'_id':False, 'FO%':False})
     for x in call:
         data.append(x)
     return data
