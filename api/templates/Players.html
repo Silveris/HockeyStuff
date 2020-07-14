@@ -26,8 +26,8 @@
       
 
     <div class="hero text-center">
-      <h1>RANKINGS</h1>
-      <h2>Players are ranked over time, by age, and time on ice.</h2>
+      <h1>Player Metrics</h1>
+      <h2>Players data over time, by age, and time on ice.</h2>
     </div>
 
     <style>
@@ -64,8 +64,9 @@
     
                    
             
-    <div class="container">
-      <div class="row margin-top-50">
+    <div class="jumbotron">
+      <!-- <div class="row margin-top-50"> -->
+      <div class="row">
         <div class="col-md-2">
           <aside class="filters">
             <div class="panel panel-default">
@@ -90,7 +91,7 @@
                             <option>Penalty Minutes</option>
                         </select>
                         <li class="filter list-group-item">
-                          <label for="date">Display As</label>
+                          <label for="date">Data Groups</label>
                           <select class="form-control" id="grouping-sel">
                               <option>All Data</option>
                               <option>Year Groups</option>
@@ -104,19 +105,18 @@
             </div>
           </aside>
         </div>
-      </div>
-        <div>
-            <div>
-                <div>
-                    graph goes here
-                </div>
+        </div class="col-md-9">
+          <div>
+            <div id="graph">
+              graph goes here
             </div>
+          </div>
         </div>
     </div>
     
-    <footer class="footer">
-      <span class="bottom"><b>Brought to you by HDC</b></span>
-    </footer>
+  <!-- <footer class="footer">
+    <span class="bottom"><b>Brought to you by HDC</b></span>
+  </footer> -->
 
 
 

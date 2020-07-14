@@ -1,3 +1,30 @@
+// Define SVG area dimensions
+var svgWidth = 960;
+var svgHeight = 500;
+
+// Define the chart's margins as an object
+var margin = {
+  top: 60,
+  right: 60,
+  bottom: 60,
+  left: 60
+};
+
+// Define dimensions of the chart area
+var chartWidth = svgWidth - margin.left - margin.right;
+var chartHeight = svgHeight - margin.top - margin.bottom;
+
+// Select body, append SVG area to it, and set its dimensions
+var svg = d3.select("#graph")
+  .append("svg")
+  .attr("width", svgWidth)
+  .attr("height", svgHeight);
+
+// Append a group area, then set its margins
+var chartGroup = svg.append("g")
+  .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+
 Promise.all([
     d3.json("api/v1.0/age/forward"),
     d3.json("api/v1.0/age/defensemen"),
@@ -11,11 +38,40 @@ Promise.all([
     // one for the 3 groups of season (2004-06, 2009-11, 2016-18) 
     f_season_data = files[2];
     d_season_data = files[3];
+
+    f_age_data.forEach(function(d) {
+        d.Age = +d.Age;
+        d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+        d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+        d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+        d["Med PIM/60min"] = +d["Med PIM/60min"];
+      });
     
-    //console.log(f_age_data);
-    //console.log(d_age_data);
-    console.log(f_season_data);
-    //console.log(d_season_data);
+      d_age_data.forEach(function(d) {
+        d.Age = +d.Age;
+        d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+        d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+        d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+        d["Med PIM/60min"] = +d["Med PIM/60min"];
+      });
+    
+    f_season_data.forEach(function(d) {
+      d.Age = +d.Age;
+      d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+      d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+      d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+      d["Med PIM/60min"] = +d["Med PIM/60min"];
+      d.Season_group = d.Seaon_group;
+    });
+    
+    d_season_data.forEach(function(d) {
+        d.Age = +d.Age;
+        d["Avg PTS/60min"] = +d["Avg PTS/60min"];
+        d["Avg HIT/60min"] = +d["Avg HIT/60min"];
+        d["Avg BLK/60min"] = +d["Avg BLK/60min"];
+        d["Med PIM/60min"] = +d["Med PIM/60min"];
+        d.Season_group = d.Seaon_group;
+      });
 
     var dropdown1 = d3.select("#position-sel");
     var dropdown2 = d3.select("#metric-sel");
@@ -30,7 +86,6 @@ Promise.all([
         console.log(`${position} ${metric} ${grouping}`);
         // Passes the dropdown values
         chooseData(position, metric, grouping)
-       
     }
 
     // Selects the correct data set based on the dropdown values
@@ -55,6 +110,75 @@ Promise.all([
 
     // Creates a plot based on the dataset and metric
     function makePlot(data, metric) {
+        graph = d3.select("g");
+        graph.html("");
+
+
+        var xLinearScale = d3.scaleLinear()
+        .domain(d3.extent(data, d => d.Age))
+        .range([0, chartWidth]);
+
+        // Configure a linear scale with a range between the chartHeight and 0
+        var yLinearScale = d3.scaleLinear()
+            .domain([d3.min(data, d => d["Avg PTS/60min"]), d3.max(data, d => d["Avg PTS/60min"])])
+            .range([chartHeight, 0]);
+
+        // Create two new functions passing the scales in as arguments
+        // These will be used to create the chart's axes
+        var bottomAxis = d3.axisBottom(xLinearScale);
+        var leftAxis = d3.axisLeft(yLinearScale);
+
+        // Configure a line function which will plot the x and y coordinates using our scales
+        var drawLine = d3.line()
+            .x(d => xLinearScale(d.Age))
+            .y(d => yLinearScale(d["Avg PTS/60min"]));
+
+        // Append an SVG path and plot its points using the line function
+        chartGroup.append("path")
+            // The drawLine function returns the instructions for creating the line for forceData
+            .attr("d", drawLine(data))
+            .classed("line", true);
+
+        // Append an SVG group element to the chartGroup, create the left axis inside of it
+        chartGroup.append("g")
+            .classed("axis", true)
+            .call(leftAxis);
+
+        // Append an SVG group element to the chartGroup, create the bottom axis inside of it
+        // Translate the bottom axis to the bottom of the page
+        chartGroup.append("g")
+            .classed("axis", true)
+            .attr("transform", `translate(0, ${chartHeight})`)
+            .call(bottomAxis);
+
+        // Add the text label for the X axis
+        svg.append("text")
+        .attr("x", (chartWidth / 2))
+        .attr("y", chartHeight + (margin.bottom * 1.8))
+        .style("text-anchor", "middle")
+        .style("font-size", "24px")
+        .text("Age");
+
+        // Add the text label for the Y axis
+        svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0)
+        .attr("x", margin.top - (chartHeight / 2.1))
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .style("font-size", "24px")
+        .text("Points per 60 Minutes");
+
+        // Add the title
+        svg.append("text")
+            .attr("x", (chartWidth / 2))     
+            .attr("y", 0 + margin.top)
+            .attr("text-anchor", "middle")
+            .style("font-size", "32px")
+            .text("Average Points per 60 Minutes by Age");
+
+
+
 
     }
 
