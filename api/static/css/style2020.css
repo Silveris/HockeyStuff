@@ -1,6 +1,6 @@
 .jumbotron {
     background: rgb(254, 254, 254); /* This is for ie8 and below */
-    background: rgba(254, 254, 254, 0.8); 
+    background: rgba(254, 254, 254, 0.4); 
  }
 
 option {
@@ -27,9 +27,9 @@ body
       font-family: Bauer;
       color: rgb(255,195,0);
     }
-      h3 {
-      font-size: 30px;
-      font-weight: bolder;
+    h2 {
+      font-size: 24px;
+      
       color: white;
     }
   
@@ -50,8 +50,9 @@ body
   bottom: 0;
   width: 100%;
   height: 50px;
-  color: black;
+  color: white;
   font-size: 18px;
+  padding-top: 35px;
 }
 
 
