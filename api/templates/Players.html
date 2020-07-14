@@ -76,20 +76,25 @@
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
                         <label for="date">Player Position</label>
-                        <select class="form-control">
+                        <select class="form-control" id="position-sel">
                             <option>Forward</option>
                             <option>Defender</option>
                         </select>
                       </li>
                       <li class="filter list-group-item">
                         <label for="date">Graph ______ vs player Age</label>
-                        <select class="form-control">
-                            <option>Opt 1</option>
-                            <option>Opt 2</option>
-                            <option>Opt 3</option>
-                            <option>Opt 4</option>
-                            <option>Opt 5</option>
+                        <select class="form-control" id="metric-select">
+                            <option>Points</option>
+                            <option>Hits</option>
+                            <option>Blocks</option>
+                            <option>Penalty Minutes</option>
                         </select>
+                        <li class="filter list-group-item">
+                          <label for="date">Graph ______ vs player Age</label>
+                          <select class="form-control" id="grouping-select">
+                              <option>All Data</option>
+                              <option>Year Groups</option>
+                          </select>
                       </li>
                     </ul>
                   </div>
