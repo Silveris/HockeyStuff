@@ -61,7 +61,7 @@ Promise.all([
       d["Avg HIT/60min"] = +d["Avg HIT/60min"];
       d["Avg BLK/60min"] = +d["Avg BLK/60min"];
       d["Med PIM/60min"] = +d["Med PIM/60min"];
-      d.Season_group = d.Seaon_group;
+      d.Season_group = d.Season_group;
     });
     
     d_season_data.forEach(function(d) {
@@ -70,12 +70,16 @@ Promise.all([
         d["Avg HIT/60min"] = +d["Avg HIT/60min"];
         d["Avg BLK/60min"] = +d["Avg BLK/60min"];
         d["Med PIM/60min"] = +d["Med PIM/60min"];
-        d.Season_group = d.Seaon_group;
+        d.Season_group = d.Season_group;
       });
 
     var dropdown1 = d3.select("#position-sel");
     var dropdown2 = d3.select("#metric-sel");
-    var dropdown3 = d3.select("grouping-sel");
+    var dropdown3 = d3.select("#grouping-sel");
+
+    function init() {
+        getDropDown;
+    }
 
     // Finds the dropdown values to make a graph with
     function getDropDown() {
@@ -92,24 +96,25 @@ Promise.all([
     function chooseData(pos, metric, group) {
         if (pos === 'Forward') {
             if (group === 'All Data') {
-                makePlot(f_age_data, metric);
+                makePlot(f_age_data, metric, group);
             }
             else {
-                makePlot(f_season_data, metric);
+                makePlot(f_season_data, metric, group);
             }
         }
         else {
             if (group === "All Data") {
-                makePlot(d_age_data, metric);
+                makePlot(d_age_data, metric, group);
             }
             else {
-                makePlot(d_season_data, metric)
+                makePlot(d_season_data, metric, group)
             }
         }
     }
 
     // Creates a plot based on the dataset and metric
-    function makePlot(data, metric) {
+    function makePlot(data, metric, group) {
+        // Clears the old visual each time a new one is created
         graph = d3.select("svg");
         graph.html("");
         var chartGroup = svg.append("g")
@@ -127,6 +132,7 @@ Promise.all([
         else {
             col_name = "Med PIM/60min"
         }
+
 
 
         var xLinearScale = d3.scaleLinear()
@@ -148,11 +154,29 @@ Promise.all([
             .x(d => xLinearScale(d.Age))
             .y(d => yLinearScale(d[col_name]));
 
-        // Append an SVG path and plot its points using the line function
-        chartGroup.append("path")
-            // The drawLine function returns the instructions for creating the line for forceData
-            .attr("d", drawLine(data))
-            .classed("line", true);
+        if (group === "Year Groups") {
+            var early = data.filter(data => data.Season_group === "2004-06");
+            var mid = data.filter(data => data.Season_group === "2009-11");
+            var late = data.filter(data => data.Season_group === "2016-18");
+            console.log(early);
+
+            chartGroup.append("path")
+                .attr("d", drawLine(early))
+                .classed("line1", true);
+            chartGroup.append("path")
+                .attr("d", drawLine(mid))
+                .classed("line2", true);
+            chartGroup.append("path")
+                .attr("d", drawLine(late))
+                .classed("line3", true);
+        }
+        else {
+            // Append an SVG path and plot its points using the line function
+            chartGroup.append("path")
+                // The drawLine function returns the instructions for creating the line for forceData
+                .attr("d", drawLine(data))
+                .classed("line", true);
+        }
 
         // Append an SVG group element to the chartGroup, create the left axis inside of it
         chartGroup.append("g")
@@ -182,7 +206,7 @@ Promise.all([
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .style("font-size", "24px")
-        .text(`${metric} per 60 Minutes`);
+        .text(`${metric} per 60 min`);
 
         // Add the title
         svg.append("text")
@@ -190,7 +214,7 @@ Promise.all([
             .attr("y", 0 + margin.top)
             .attr("text-anchor", "middle")
             .style("font-size", "32px")
-            .text(`Average ${metric} per 60 Minutes by Age`);
+            .text(`Average ${metric} per 60 Minutes`);
 
 
 
@@ -198,102 +222,8 @@ Promise.all([
     }
 
 
-
+    init;
     dropdown1.on("change", getDropDown);
     dropdown2.on("change", getDropDown);
     dropdown3.on("change", getDropDown);
-    
-
-
-
-
-
-
 })
-
-// ------------------------------------------------------------------------------
-
-// // Define SVG area dimensions
-// var svgWidth = 960;
-// var svgHeight = 500;
-
-// // Define the chart's margins as an object
-// var margin = {
-//   top: 60,
-//   right: 60,
-//   bottom: 60,
-//   left: 60
-// };
-
-// // Define dimensions of the chart area
-// var chartWidth = svgWidth - margin.left - margin.right;
-// var chartHeight = svgHeight - margin.top - margin.bottom;
-
-// // Select body, append SVG area to it, and set its dimensions
-// var svg = d3.select("body")
-//   .append("svg")
-//   .attr("width", svgWidth)
-//   .attr("height", svgHeight);
-
-// // Append a group area, then set its margins
-// var chartGroup = svg.append("g")
-//   .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-// // Load data from API
-// d3.json("api/v1.0/ageseason/forward").then(function(asfData) {
-
-//   // Format the date and cast the force value to a number
-//   asfData.forEach(function(d) {
-//     d.Age = +d.Age;
-//     d["Avg PTS/60min"] = +d["Avg PTS/60min"];
-//     d.Season_group = d.Seaon_group;
-//   });
-
-//   f_age_data.forEach(function(d) {
-//       d.Age = +d.Age;
-//       d["Avg PTS/60min"] = +d["Avg PTS/60min"];
-//       d["Avg HIT/60min"] = +d["Avg HIT/60min"];
-//       d["Avg BLK/60min"] = +d["Avg BLK/60min"];
-//       d["Med PIM/60min"] = +d["Med PIM/60min"];
-//   })
-
-//   // d3.extent returns the an array containing the min and max values for the property specified
-//   var xLinearScale = d3.scaleLinear()
-//     .domain(d3.extent(asfData, d => d.Age))
-//     .range([0, chartWidth]);
-
-//   // Configure a linear scale with a range between the chartHeight and 0
-//   var yLinearScale = d3.scaleLinear()
-//     .domain([0, d3.max(asfData, d => d["Avg PTS/60min"])])
-//     .range([chartHeight, 0]);
-
-//   // Create two new functions passing the scales in as arguments
-//   // These will be used to create the chart's axes
-//   var bottomAxis = d3.axisBottom(xLinearScale);
-//   var leftAxis = d3.axisLeft(yLinearScale);
-
-//   // Configure a line function which will plot the x and y coordinates using our scales
-//   var drawLine = d3.line()
-//     .x(d => xLinearScale(d.Age))
-//     .y(d => yLinearScale(d["Avg PTS/60min"]));
-
-//   // Append an SVG path and plot its points using the line function
-//   chartGroup.append("path")
-//     // The drawLine function returns the instructions for creating the line for forceData
-//     .attr("d", drawLine(asfData))
-//     .classed("line", true);
-
-//   // Append an SVG group element to the chartGroup, create the left axis inside of it
-//   chartGroup.append("g")
-//     .classed("axis", true)
-//     .call(leftAxis);
-
-//   // Append an SVG group element to the chartGroup, create the bottom axis inside of it
-//   // Translate the bottom axis to the bottom of the page
-//   chartGroup.append("g")
-//     .classed("axis", true)
-//     .attr("transform", `translate(0, ${chartHeight})`)
-//     .call(bottomAxis);
-// }).catch(function(error) {
-//   console.log(error);
-// });

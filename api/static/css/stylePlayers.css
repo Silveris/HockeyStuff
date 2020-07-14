@@ -76,9 +76,26 @@ h2 {
   padding-top: 35px;
 }
 
-path {
+.line {
   stroke: blue;
-  stroke-width: 1;
+  stroke-width: 2;
   fill: none;
 }
 
+.line1 {
+  stroke: blue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.line2 {
+  stroke: orange;
+  stroke-width: 2;
+  fill: none;
+}
+
+.line3 {
+  stroke: green;
+  stroke-width: 2;
+  fill: none;
+}
