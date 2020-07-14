@@ -8,10 +8,16 @@ body /*{
     background: rgb(32, 32, 32);
   }*/
     h1 {
+    font-size: 50px;
+    font-family: Bauer;
+    color: rgb(255,195,0);
+  }
+  h2 {
     font-size: 70px;
     font-family: NHL;
     color: rgb(255,195,0);
   }
+
     h3 {
     font-size: 40px;
     font-weight: bolder;
@@ -27,6 +33,14 @@ body /*{
 
   .navbar-header {
     color: white;
+  }
+
+  .logo {
+    border: 2px solid black;
+    padding: 35px;
+    background: url(img_flwr.gif);
+    background-repeat: no-repeat;
+    background-origin: content-box;
   }
 
   a:link {
@@ -47,7 +61,7 @@ body /*{
 
 .jumbotron {
   background: rgb(119, 145, 180); /* This is for ie8 and below */
-  background: rgba(254, 254, 254, 0.7); 
+  background: rgba(254, 254, 254, 0.8); 
   color:  rgb(32, 32, 32);
   font-size: 24px;
   padding-top: 10px;
@@ -62,7 +76,7 @@ body /*{
     margin-right: 100px;
     margin-left: 100px;
     margin-bottom: 50px;
-    font-family: Rockwell;
+    font-family: Franklin Gothic Medium, Chiller;
   }
 .blurb {
   margin-bottom: 30px;
