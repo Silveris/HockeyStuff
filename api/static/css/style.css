@@ -8,19 +8,30 @@ body /*{
     background: rgb(32, 32, 32);
   }*/
     h1 {
-    font-size: 50px;
+    font-size: 70px;
+    font-family: NHL;
+    color: rgb(255,195,0);
   }
     h3 {
-    font-size: 30px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
   }
   
   .navbar-default {
-  padding-bottom: 30px;
-  padding-top: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: black;
+    color: white;
+  }
+
+  .navbar-header {
+    color: white;
   }
 
   a:link {
-    color: navy;
+    color: #32559A;
+    font-weight: bolder;
   }
 
   /*
@@ -34,9 +45,9 @@ body /*{
 }
 */
 
-.jumbotronHome {
+.jumbotron {
   background: rgb(119, 145, 180); /* This is for ie8 and below */
-  background: rgba(254, 254, 254, 0.8); 
+  background: rgba(254, 254, 254, 0.7); 
   color:  rgb(32, 32, 32);
   font-size: 24px;
   padding-top: 10px;
@@ -45,14 +56,13 @@ body /*{
 }
 
 
-
-
 /* Formatting for paragraph elements */
 .blurbs {
     margin-top: 50px;
     margin-right: 100px;
     margin-left: 100px;
     margin-bottom: 50px;
+    font-family: Rockwell;
   }
 .blurb {
   margin-bottom: 30px;

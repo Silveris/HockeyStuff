@@ -2,30 +2,44 @@
 /* Giving the body the specified background color, adding font sizes for the h1 and h3 elements we'll be using */
 body 
     h1 {
-    font-size: 50px;
-  }
-    h3 {
-    font-size: 30px;
-  }
+      font-size: 60px;
+      font-family: Bauer;
+      color: rgb(255,195,0);
+    }
+      h3 {
+      font-size: 40px;
+      font-weight: bolder;
+      color: white;
+    }
   
 
 .navbar-default {
-  padding-bottom: 20px;
-  padding-top: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: black;
+    color: white;
   }
 
-.jumbotronHome {
-  background: rgb(119, 145, 180); /* This is for ie8 and below */
-  background: rgba(254, 254, 254, 0.5); 
-  color:  rgb(32, 32, 32);
-  font-size: 24px;
-}
+  .navbar-header {
+    color: white;
+  }    
+
+  a:link {
+    color: #32559A;
+    font-weight: bolder;
+  }  
 
 .jumbotron {
-  background: rgb(254, 254, 254); /* This is for ie8 and below */
-  background: rgba(254, 254, 254, 0.5); 
-  color:  black
+  background: rgb(119, 145, 180); /* This is for ie8 and below */
+  background: rgba(254, 254, 254, 0.7); 
+  color:  rgb(32, 32, 32);
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
 }
+
+
 
 /*center="class" for the homepage image*/
 .center {
@@ -50,9 +64,10 @@ body
 
 .footer {
   position: relative;
-  color:  black;
+  color:  white;
   font-weight: bold;
   font-size: 16pt;
+  padding-top: 35px;
 }
 
 
